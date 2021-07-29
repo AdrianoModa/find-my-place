@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { } from "google.maps";
 
 @Component({
@@ -19,6 +20,10 @@ export class FindPlaceComponent implements OnInit {
       center: { lat: -34.397, lng: 150.644 },
       zoom: 8
     })
+  }
+
+  enviarLocalizacao = (f: NgForm) => {
+    alert(f.value.latitude)
   }
 
 }
