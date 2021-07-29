@@ -9,26 +9,50 @@
                 <div class="row">
                     <div class="col-md-2">
                         <label class="form-label">Entre com a latitude <span class="text-danger">*</span></label>
-                        <input class="form-control" type="number" name="latitude" (ngModel)="mapas.latitude"
+                        <input class="form-control" type="number" name="latitude" [(ngModel)]="mapas.latitude" #latitude="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && latitude.invalid , 'is-valid': f.submitted && latitude.valid }"
                             autocomplete="off" required>
+                            <div *ngIf="f.submitted && latitude.invalid" class="invalid-feedback">
+                                <div *ngIf="latitude.errors.required">É necessário a latitude
+                                </div>
+                            </div>
+                            <div *ngIf="f.submitted && latitude.valid" class="valid-feedback">
+                                <div *ngIf="latitude.touched">latitude Ok</div>
+                            </div>
                     </div>
                     <div class="row">
                         <div class="col-md-2">
                             <label class="form-label">Entre com a longitude<span class="text-danger">*</span></label>
-                            <input class="form-control" type="number" name="longitude" (ngModel)="mapas.longitude"
+                            <input class="form-control" type="number" name="longitude" [(ngModel)]="mapas.longitude" #longitude="ngModel"
+                            [ngClass]="{ 'is-invalid': f.submitted && longitude.invalid, 'is-valid': f.submitted && longitude.valid }"
                                 autocomplete="off" required>
+                                <div *ngIf="f.submitted && longitude.invalid" class="invalid-feedback">
+                                    <div *ngIf="longitude.errors.required">É necessário a longitude
+                                    </div>
+                                </div>
+                                <div *ngIf="f.submitted && longitude.valid" class="valid-feedback">
+                                    <div *ngIf="longitude.touched">longitude Ok</div>
+                                </div>
                         </div>
                         <div class="col-md-2">
                             <label class="form-label">Zoom</label>
-                            <input class="form-control" type="number" name="zoom" value="0" (ngModel)="mapas.zoom"
+                            <input class="form-control" type="number" name="zoom" value="0" [(ngModel)]="mapas.zoom"
                                 autocomplete="off">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
                             <label class="form-label">Texto<span class="text-danger">*</span></label>
-                            <input class="form-control" type="text" name="texto" (ngModel)="mapas.texto" 
+                            <input class="form-control" type="text" name="texto" [(ngModel)]="mapas.texto" #texto="ngModel"
+                            [ngClass]="{'is-invalid': f.submitted && texto.invalid, 'is-valid': f.submitted && texto.valid }"
                                 autocomplete="off" required>
+                                <div *ngIf="f.submitted && texto.invalid" class="invalid-feedback">
+                                    <div *ngIf="texto.errors.required">É necessário um texto
+                                    </div>
+                                </div>
+                                <div *ngIf="f.submitted && texto.valid" class="valid-feedback">
+                                    <div *ngIf="texto.touched">texto Ok</div>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -39,10 +63,6 @@
                             {{ !loading ? 'Buscar' : 'Buscando...' }} <i class="fa fa-map-marker"></i></button>
                         <button type="reset" class="btn btn-secondary">Limpar Campos</button>
                     </div>
-                </div>
-                <div class="container">
-                    <pre>{{ f.valid }}</pre>
-                    <pre>{{ f.value | json }}</pre>
                 </div>
             </form>
         </div>
