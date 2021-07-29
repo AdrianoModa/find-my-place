@@ -1,32 +1,47 @@
 <app-navbar></app-navbar>
-<div class="container" id="map">
-</div>
 <div class="container">
-    <div class="card mx-auto mt-3">
-        <h4 class="card-header">
+    <div class="card mx-auto mb-3">
+        <h6 class="card-header">
             Entre com dados da Localização
-        </h4>
+        </h6>
         <div class="card-body">
-            <form (ngSubmit)="enviarLocalizacao(f)" #f="ngForm">
+            <form (ngSubmit)="enviar_localizacao(f)" #f="ngForm">
                 <div class="row">
                     <div class="col-md-2">
                         <label class="form-label">Entre com a latitude</label>
-                        <input class="form-control" type="text" name="latitude" autocomplete="off">
+                        <input class="form-control" type="number" name="latitude" [(ngModel)]="mapas.latitude"
+                            autocomplete="off">
                     </div>
                     <div class="row">
                         <div class="col-md-2">
                             <label class="form-label">Entre com a longitude</label>
-                            <input class="form-control" type="text" name="longitude" autocomplete="off">
+                            <input class="form-control" type="number" name="longitude" [(ngModel)]="mapas.longitude"
+                                autocomplete="off">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Zoom</label>
+                            <input class="form-control" type="number" name="zoom" value="0" [(ngModel)]="mapas.zoom"
+                                autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="form-label">Texto</label>
+                            <input class="form-control" type="text" name="texto" [(ngModel)]="mapas.texto"
+                                autocomplete="off">
                         </div>
                     </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-2">
-                        <button type="submit" class="btn btn-success">Buscar Local <i class="fa fa-map-marker"></i></button>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <button type="submit" [disabled]="loading" class="btn btn-success"><span *ngIf="loading" class="spinner-grow spinner-grow-sm mr-1"></span>
+                            {{ !loading ? 'Buscar' : 'Buscando...' }} <i class="fa fa-map-marker"></i></button>
+                        <button type="reset" class="btn btn-secondary">Limpar Campos</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
+<div class="container" id="map">
+</div>

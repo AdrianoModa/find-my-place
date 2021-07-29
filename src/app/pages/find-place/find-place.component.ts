@@ -1,3 +1,4 @@
+import { Mapa } from './../../shared/model/mapa';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { } from "google.maps";
@@ -9,6 +10,9 @@ import { } from "google.maps";
 })
 export class FindPlaceComponent implements OnInit {
 
+  mapas: Mapa[] = []
+  loading: boolean = false
+
   constructor() { }
 
   ngOnInit() {
@@ -16,14 +20,57 @@ export class FindPlaceComponent implements OnInit {
   }
 
   initMap = () => {
-    new google.maps.Map(document.getElementById('map') as HTMLElement, {
-      center: { lat: -34.397, lng: 150.644 },
-      zoom: 8
+    const lat_long = { lat: -3.75, lng: -38.555 }
+    const map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
+      center: lat_long,
+      zoom: 10
+    })
+    new google.maps.Marker({
+      position: lat_long,
+      map,
+      title: 'Fortaleza - Ceará'
     })
   }
 
-  enviarLocalizacao = (f: NgForm) => {
-    alert(f.value.latitude)
+  enviar_localizacao = (f: NgForm) => {
+    this.loading = true
+    
+    if (f.invalid) {
+      return
+    }
+
+    const timeout = 2000
+    setTimeout(() => {
+      this.buscar_local(f.value.latitude, f.value.longitude, f.value.texto, f.value.zoom)
+      this.loading = false
+      f.resetForm({})
+    }, timeout);
+  }
+
+  buscar_local = (latitude: number, longitude: number, conteudo_texto: string, zoom?: number) => {
+    const mapaHtml = document.getElementById('map') as HTMLElement
+    const lat_long = { lat: latitude, lng: longitude }
+    const map = new google.maps.Map(mapaHtml, {
+      center: lat_long,
+      zoom: zoom ? zoom : 10
+    })
+
+    const marcador = new google.maps.Marker({
+      position: lat_long,
+      map
+    })
+
+    const texto_mapa = new google.maps.InfoWindow({
+      content: conteudo_texto
+    })
+
+    marcador.addListener('click', () => {
+      texto_mapa.open({
+        anchor: marcador,
+        map,
+        shouldFocus: false
+      })
+    })
   }
 
 }

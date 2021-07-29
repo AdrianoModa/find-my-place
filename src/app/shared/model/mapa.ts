@@ -1,5 +1,7 @@
 export class Mapa {
     
-    latitude: string
-    longitude: string
+    latitude: number
+    longitude: number
+    texto: string
+    zoom?: number
 }
