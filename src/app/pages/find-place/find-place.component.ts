@@ -1,3 +1,4 @@
+import { MensagemService } from './../../shared/service/mensagem.service';
 import { Mapa } from './../../shared/model/mapa';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -13,7 +14,7 @@ export class FindPlaceComponent implements OnInit {
   mapas: Mapa[] = []
   loading: boolean = false
 
-  constructor() { }
+  constructor(private mensagemService: MensagemService) { }
 
   ngOnInit() {
     this.initMap()
@@ -33,17 +34,19 @@ export class FindPlaceComponent implements OnInit {
   }
 
   enviar_localizacao = (f: NgForm) => {
-    this.loading = true
     
     if (f.invalid) {
-      return
+      return this.mensagemService.exibir_erro('Existe campos não preenchidos!', 'Localização')
     }
+
+    this.loading = true
 
     const timeout = 2000
     setTimeout(() => {
       this.buscar_local(f.value.latitude, f.value.longitude, f.value.texto, f.value.zoom)
       this.loading = false
       f.resetForm({})
+      this.mensagemService.exibir_sucesso('Buscar realizada com sucesso', 'Buscar Localização')
     }, timeout);
   }
 

@@ -5,30 +5,30 @@
             Entre com dados da Localização
         </h6>
         <div class="card-body">
-            <form (ngSubmit)="enviar_localizacao(f)" #f="ngForm">
+            <form (ngSubmit)="enviar_localizacao(f)" #f="ngForm" novalidate>
                 <div class="row">
                     <div class="col-md-2">
-                        <label class="form-label">Entre com a latitude</label>
-                        <input class="form-control" type="number" name="latitude" [(ngModel)]="mapas.latitude"
-                            autocomplete="off">
+                        <label class="form-label">Entre com a latitude <span class="text-danger">*</span></label>
+                        <input class="form-control" type="number" name="latitude" (ngModel)="mapas.latitude"
+                            autocomplete="off" required>
                     </div>
                     <div class="row">
                         <div class="col-md-2">
-                            <label class="form-label">Entre com a longitude</label>
-                            <input class="form-control" type="number" name="longitude" [(ngModel)]="mapas.longitude"
-                                autocomplete="off">
+                            <label class="form-label">Entre com a longitude<span class="text-danger">*</span></label>
+                            <input class="form-control" type="number" name="longitude" (ngModel)="mapas.longitude"
+                                autocomplete="off" required>
                         </div>
                         <div class="col-md-2">
                             <label class="form-label">Zoom</label>
-                            <input class="form-control" type="number" name="zoom" value="0" [(ngModel)]="mapas.zoom"
+                            <input class="form-control" type="number" name="zoom" value="0" (ngModel)="mapas.zoom"
                                 autocomplete="off">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <label class="form-label">Texto</label>
-                            <input class="form-control" type="text" name="texto" [(ngModel)]="mapas.texto" 
-                                autocomplete="off">
+                            <label class="form-label">Texto<span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" name="texto" (ngModel)="mapas.texto" 
+                                autocomplete="off" required>
                         </div>
                     </div>
                 </div>
@@ -39,6 +39,10 @@
                             {{ !loading ? 'Buscar' : 'Buscando...' }} <i class="fa fa-map-marker"></i></button>
                         <button type="reset" class="btn btn-secondary">Limpar Campos</button>
                     </div>
+                </div>
+                <div class="container">
+                    <pre>{{ f.valid }}</pre>
+                    <pre>{{ f.value | json }}</pre>
                 </div>
             </form>
         </div>
