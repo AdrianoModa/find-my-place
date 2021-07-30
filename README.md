@@ -1,27 +1,26 @@
 # FindMyPlace
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
+Aplicação Web de busca de um local específico no google maps, informando a latitude e a longitude.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Sobre a aplicação
+O projeto foi construído com Angular versão 8, usando Angular CLI.
+Para os dados do mapa foi utilizado a API Google Maps.
 
-## Code scaffolding
+## Como rodar o projeto
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+No terminal de sua IDE, baixe o projeto por `https://github.com/AdrianoModa/find-my-place.git`
 
-## Build
+Ainda no terminal, dentre na pasta do projeto e rode `ng serve`. No navegador entre em `http://localhost:4200/`e pronto.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Como utilizar a aplicação
 
-## Running unit tests
+Na tela principal, entre com os campos obrigatórios, a saber: <b>Latitude</b>, <b>Longitude</b> e o <b>Texto</b> a ser exibido. 
+O campo <b>Zoom</b> é opcional.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Ao clicar em <b>Buscar</b> o mapa ser redirecionado conforme os dados inseridos. E pra exibir o texto informado, clique no marcador que está no mapa.
 
-## Running end-to-end tests
+## Autor
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Nome: Adriano Moda Feitosa<br>
+:octocat: Github: https://github.com/AdrianoModa
