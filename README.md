@@ -7,6 +7,10 @@ Aplicação Web de busca de um local específico no google maps, informando a la
 O projeto foi construído com Angular versão 8, usando Angular CLI.
 Para os dados do mapa foi utilizado a API Google Maps.
 
+## Requisitos
+Node.js - `https://nodejs.org/pt-br/`<br>
+Angular Cli - `https://angular.io/cli`
+
 ## Como rodar o projeto
 
 No terminal de sua IDE, baixe o projeto por `https://github.com/AdrianoModa/find-my-place.git`
