@@ -17,10 +17,17 @@ No terminal de sua IDE, baixe o projeto com o comando:  `git clone https://githu
 `cd find-my-place`<br> 
 Instale as dependencias:<br>
 `npm install`<br>
+
+O compilador typescript exigirá configurações adicionais<br>
+Edite o arquivo: node_modules\@types\google.maps\index.d.ts
+insira: `declare module 'google.maps';`<br>
+
+![typescript-maps-module-github](https://user-images.githubusercontent.com/21965591/127751692-59d97958-33e3-4525-8b94-19280c3b7b78.png)
+
 Rode o projeto:<br>
 `ng serve`
 
-Ainda no terminal, dentre na pasta do projeto e rode `ng serve`. No navegador entre em `http://localhost:4200/`e pronto.
+No navegador entre em `http://localhost:4200/`e pronto.
 
 ## Como utilizar a aplicação
 
