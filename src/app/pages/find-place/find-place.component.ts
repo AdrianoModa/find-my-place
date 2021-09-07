@@ -39,11 +39,13 @@ export class FindPlaceComponent implements OnInit {
       return this.mensagemService.exibir_erro('Existe campos não preenchidos!', 'Localização')
     }
 
+
     this.loading = true
 
     const timeout = 2000
     setTimeout(() => {
       this.buscar_local(f.value.latitude, f.value.longitude, f.value.texto, f.value.zoom)
+      window.scroll(0,250)
       this.loading = false
       f.resetForm({})
       this.mensagemService.exibir_sucesso('Buscar realizada com sucesso', 'Buscar Localização')
