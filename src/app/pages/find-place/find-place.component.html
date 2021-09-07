@@ -7,53 +7,67 @@
         <div class="card-body">
             <form (ngSubmit)="enviar_localizacao(f)" #f="ngForm" novalidate>
                 <div class="row">
-                    <div class="col-md-2">
-                        <label class="form-label">Entre com a latitude <span class="text-danger">*</span></label>
-                        <input class="form-control" type="number" name="latitude" [(ngModel)]="mapas.latitude" #latitude="ngModel"
-                        [ngClass]="{ 'is-invalid': f.submitted && latitude.invalid , 'is-valid': f.submitted && latitude.valid }"
-                            autocomplete="off" required>
-                            <div *ngIf="f.submitted && latitude.invalid" class="invalid-feedback">
-                                <div *ngIf="latitude.errors.required">É necessário a latitude
-                                </div>
-                            </div>
-                            <div *ngIf="f.submitted && latitude.valid" class="valid-feedback">
-                                <div *ngIf="latitude.touched">latitude Ok</div>
-                            </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <label class="form-label">Entre com a longitude<span class="text-danger">*</span></label>
-                            <input class="form-control" type="number" name="longitude" [(ngModel)]="mapas.longitude" #longitude="ngModel"
-                            [ngClass]="{ 'is-invalid': f.submitted && longitude.invalid, 'is-valid': f.submitted && longitude.valid }"
-                                autocomplete="off" required>
-                                <div *ngIf="f.submitted && longitude.invalid" class="invalid-feedback">
-                                    <div *ngIf="longitude.errors.required">É necessário a longitude
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="form-label">Entre com a latitude <span class="text-danger">*</span></label>
+                                <input class="form-control" type="number" name="latitude" [(ngModel)]="mapas.latitude" #latitude="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted && latitude.invalid , 'is-valid': f.submitted && latitude.valid }"
+                                    autocomplete="off" required>
+                                    <div *ngIf="f.submitted && latitude.invalid" class="invalid-feedback">
+                                        <div *ngIf="latitude.errors.required">É necessário a latitude
+                                        </div>
                                     </div>
-                                </div>
-                                <div *ngIf="f.submitted && longitude.valid" class="valid-feedback">
-                                    <div *ngIf="longitude.touched">longitude Ok</div>
-                                </div>
+                                    <div *ngIf="f.submitted && latitude.valid" class="valid-feedback">
+                                        <div *ngIf="latitude.touched">latitude Ok</div>
+                                    </div>
+                            </div>
                         </div>
-                        <div class="col-md-2">
-                            <label class="form-label">Zoom</label>
-                            <input class="form-control" type="number" name="zoom" value="0" [(ngModel)]="mapas.zoom"
-                                autocomplete="off">
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">Entre com a longitude<span class="text-danger">*</span></label>
+                                <input class="form-control" type="number" name="longitude" [(ngModel)]="mapas.longitude" #longitude="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted && longitude.invalid, 'is-valid': f.submitted && longitude.valid }"
+                                    autocomplete="off" required>
+                                    <div *ngIf="f.submitted && longitude.invalid" class="invalid-feedback">
+                                        <div *ngIf="longitude.errors.required">É necessário a longitude
+                                        </div>
+                                    </div>
+                                    <div *ngIf="f.submitted && longitude.valid" class="valid-feedback">
+                                        <div *ngIf="longitude.touched">longitude Ok</div>
+                                    </div>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Zoom</label>
+                                <input class="form-control" type="number" name="zoom" value="0" [(ngModel)]="mapas.zoom"
+                                    autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="form-label">Texto<span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" name="texto" [(ngModel)]="mapas.texto" #texto="ngModel"
+                                [ngClass]="{'is-invalid': f.submitted && texto.invalid, 'is-valid': f.submitted && texto.valid }"
+                                    autocomplete="off" required>
+                                    <div *ngIf="f.submitted && texto.invalid" class="invalid-feedback">
+                                        <div *ngIf="texto.errors.required">É necessário um texto
+                                        </div>
+                                    </div>
+                                    <div *ngIf="f.submitted && texto.valid" class="valid-feedback">
+                                        <div *ngIf="texto.touched">texto Ok</div>
+                                    </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label class="form-label">Texto<span class="text-danger">*</span></label>
-                            <input class="form-control" type="text" name="texto" [(ngModel)]="mapas.texto" #texto="ngModel"
-                            [ngClass]="{'is-invalid': f.submitted && texto.invalid, 'is-valid': f.submitted && texto.valid }"
-                                autocomplete="off" required>
-                                <div *ngIf="f.submitted && texto.invalid" class="invalid-feedback">
-                                    <div *ngIf="texto.errors.required">É necessário um texto
-                                    </div>
-                                </div>
-                                <div *ngIf="f.submitted && texto.valid" class="valid-feedback">
-                                    <div *ngIf="texto.touched">texto Ok</div>
-                                </div>
-                        </div>
+                    <div class="col">
+                        <p>Exemplo: </p>
+                        <ul class="list-group">
+                            <li class="list-group-item">Manaus: Latitude: -3.107, Longitude: -60.026</li>
+                            <li class="list-group-item">Fortaleza: Latitude: -3.718, Longitude: -38.543</li>
+                            <li class="list-group-item">Porto Alegre: Latitude: -30.027, Longitude: -51.228</li>
+                            <li class="list-group-item">São Paulo: Latitude: -23.533, Longitude: -46.625</li>
+                            <li class="list-group-item">Brasília: Latitude:  -15.793, Longitude: -47.882</li>
+                          </ul>
                     </div>
                 </div>
                 <div class="row mt-3">
